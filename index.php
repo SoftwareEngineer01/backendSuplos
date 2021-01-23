@@ -14,29 +14,45 @@
 </head>
 
 <body>
-  <video src="img/video.mp4" id="vidFondo"></video>
 
+  <?php                     
+    require_once "controller/controller.php";
+    $dt = new Controller();
+  ?>
+ 
   <div class="contenedor">
     <div class="card rowTitulo">
       <h1>Bienes Intelcost</h1>
     </div>
     <div class="colFiltros">
-      <form action="#" method="post" id="formulario">
+      <form action="controller/ajax.php" method="post" id="formulario">
         <div class="filtrosContenido">
           <div class="tituloFiltros">
             <h5>Filtros</h5>
           </div>
           <div class="filtroCiudad input-field">
             <p><label for="selectCiudad">Ciudad:</label><br></p>
-            <select name="ciudad" id="selectCiudad">
-              <option value="" selected>Elige una ciudad</option>
+            <select name="ciudad" id="selectCiudad">          
+             <option value='' selected>Elige una ciudad</option>             
+               <?php 
+                $value = 'Ciudad';
+                $fixed = $dt->getDataSelect($value);
+                foreach ($fixed as $data) : ?>
+                  <option value="<?= $data[$value]; ?>"><?= $data[$value]; ?></option>
+                <?php endforeach; ?>           
             </select>
           </div>
           <div class="filtroTipo input-field">
             <p><label for="selecTipo">Tipo:</label></p>
             <br>
             <select name="tipo" id="selectTipo">
-              <option value="">Elige un tipo</option>
+            <option value='' selected>Elige un Tipo</option>             
+               <?php 
+                $value = 'Tipo';
+                $fixed = $dt->getDataSelect($value);
+                foreach ($fixed as $data) : ?>
+                  <option value="<?= $data[$value]; ?>"><?= $data[$value]; ?></option>
+                <?php endforeach; ?>      
             </select>
           </div>
           <div class="filtroPrecio">
@@ -54,14 +70,54 @@
         <li><a href="#tabs-1">Bienes disponibles</a></li>
         <li><a href="#tabs-2">Mis bienes</a></li>
       </ul>
-      <div id="tabs-1">
+      <!-- <div id="tabs-1">
         <div class="colContenido" id="divResultadosBusqueda">
           <div class="tituloContenido card" style="justify-content: center;">
             <h5>Resultados de la búsqueda:</h5>
             <div class="divider"></div>
           </div>
         </div>
+      </div> -->
+
+      <div class="data">          
+        <?php  
+         
+          $data = $dt->getData();
+          
+          foreach ($data as $info) {
+            echo "<br>";           
+            echo "<div>";
+            echo "<img class='image' src='img/home.jpg'>";           
+            echo "</div>";
+
+            echo "<div>";
+            echo "Dirección: ".$info['Direccion'];      
+            echo "</div>";  
+            
+            echo "<div>";
+            echo "Ciudad: ".$info['Ciudad'];      
+            echo "</div>";  
+
+            echo "<div>";
+            echo "Teléfono: ".$info['Telefono'];      
+            echo "</div>";  
+
+            echo "<div>";
+            echo "Código Postal: ".$info['Codigo_Postal'];      
+            echo "</div>";  
+
+            echo "<div>";
+            echo "Tipo: ".$info['Tipo'];      
+            echo "</div>";  
+
+            echo "<div>";
+            echo "Precio: ".$info['Precio'];      
+            echo "</div>";  
+          }
+        ?>    
       </div>
+
+
       
       <div id="tabs-2" >
         <div class="colContenido" id="divResultadosBusqueda">
