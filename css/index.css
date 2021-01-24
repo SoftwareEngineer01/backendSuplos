@@ -14,6 +14,7 @@ video#vidFondo {
 .image {
   width: 200px;
   height: 200px;
+  padding: 5px;
 }
 
 .contenedor{
@@ -89,18 +90,18 @@ video#vidFondo {
 }
 .botonField{
   width: 100%;
-  height: 70px;
+  height: 45px;
   text-align: center;
 }
 .botonField input{
   color: #648C7D;
 }
 .colContenido{
-  width: 75%;
+  width: 80%;
   display: flex;
   flex-flow: row wrap;
   align-content: space-between;
-  padding: 20px;
+  padding: 10px;
 }
 .tituloContenido{
   width: 100%;
@@ -150,7 +151,14 @@ video#vidFondo {
 }
 
 .data {
-  background-color:#cfcfcf;
-  margin-left: 5px;
-  margin-top: 5px;
+  background-color:#f7f7f7;
+  border-radius: 15px;
 }
+
+.title {
+  width: 100%;  
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5px;
+}
+
