@@ -23,7 +23,6 @@
 
     $dt = new Controller();
     $rs = $dt->getData();
-
   ?>
 
   <div class="contenedor">
@@ -86,22 +85,23 @@
       </div> -->
 
       <div class="data" id="tabs-1">
-        <div class="colContenido data" id="divResultadosBusqueda">
-          <?php foreach ($rs as $info) : ?>
+        <div class="colContenido data" id="divResultadosBusqueda">               
+          <?php foreach ($rs as $info) : ?>                    
           <img class='image' src='img/home.jpg'>
-          <p>           
+          <p>
+             ID: <span id="id_data"><?=$info['Id'] ?></span> <br>           
              Dirección: <span id="direction"><?=$info['Direccion'] ?></span> <br>             
              Ciudad: <span id="city"><?=$info['Ciudad'] ?></span>  <br>            
              Teléfono: <span id="telephone"><?=$info['Telefono'] ?></span> <br>             
              Código Postal: <span id="zip_code"><?=$info['Codigo_Postal'] ?></span> <br>
              Tipo: <span id="type"><?=$info['Tipo'] ?></span> <br>
              Precio: <span id="price"><?=$info['Precio'] ?></span>
-          </p>
-           <div class="botonField">
-             <button class="btn">Guardar</button>            
+          </p>          
+           <div class="botonField">             
+            <button type="button" class="btn" id="sendData" onclick="sendData(<?= $info['Id'] ?>)">Guardar</button>                        
            </div>             
            <div class="divider"></div>              
-          <?php endforeach; ?>
+          <?php endforeach; ?>                     
         </div>
       </div>
 
@@ -121,6 +121,7 @@
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/buscador.js"></script>
+    <script type="text/javascript" src="js/sendData.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {

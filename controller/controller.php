@@ -24,8 +24,7 @@ class Controller {
 
     public static function getDataParams($city=null, $type=null){
       $json  = file_get_contents('../data/data-1.json');
-      $array = json_decode($json, true);        
-      $temp  = array();             
+      $array = json_decode($json, true);                  
       $fixed = array();
 
       foreach($array as $key => $value){
@@ -39,6 +38,20 @@ class Controller {
       } 
     
       return json_encode($fixed);
+    }
+
+    public static function getDataById($id) {
+      $json  = file_get_contents('../data/data-1.json');
+      $array = json_decode($json, true);                  
+      $fixed = '';
+
+      foreach ($array as $key => $value) {
+        if($id == $value['Id']) {
+          $fixed = $value;
+        }
+      }
+
+      return $fixed;
     }
 
 }
