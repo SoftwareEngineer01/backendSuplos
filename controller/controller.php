@@ -1,7 +1,7 @@
 <?php
 
 class Controller {
-    
+  
     public static function getData() {
       $model = Model::getDataJson();
       return $model;
@@ -51,14 +51,9 @@ class Controller {
         }
       }
 
-      return $fixed;
+      $property = Model::addProperty($fixed);
+
+      return $property;
     }
 
 }
-
-
-
-
-
-
-

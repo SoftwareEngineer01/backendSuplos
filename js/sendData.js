@@ -6,5 +6,6 @@ function sendData(id) {
       }).done(function (resp) {
         var rs = JSON.parse(resp);
         console.log(rs);
+        alert(rs);
     });
 }
